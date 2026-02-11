@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,23 +11,26 @@
     <style>
         :root {
             --brand-orange: #f57c20;
-            --navy-dark: #1e293b;
-            --text-gray: #64748b;
+            --navbar-dark: #0f172a; 
+            --text-white: #ffffff;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; text-decoration: none !important; }
         body { font-family: 'Poppins', sans-serif; line-height: 1.6; overflow-x: hidden; background-color: #fff; }
 
-        /* --- NAVIGATION --- */
+        /* --- FIXED SOLID PREMIUM NAVBAR --- */
         .navbar {
             position: fixed;
-            top: 0; width: 100%; 
-            height: 70px; /* Reduced from 80px to match smaller logo */
-            background: white;
+            top: 0; 
+            width: 100%; 
+            height: 90px; 
             z-index: 2000;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
             display: flex;
             align-items: center;
+            /* Constant Premium Solid Gradient */
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-bottom: 3px solid var(--brand-orange);
         }
 
         .nav-wrapper {
@@ -38,30 +43,27 @@
             padding: 0 30px;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
         .logo img { 
-            height: 45px; /* Matched to 70px navbar for perfect padding */
+            height: 60px; /* Large, clear logo size */
             width: auto; 
-            flex-shrink: 0; 
             object-fit: contain;
+            transition: 0.3s ease;
         }
+        
+        .logo img:hover { transform: scale(1.05); }
 
-        /* Navigation Links */
         .nav-links {
             display: flex;
-            gap: 35px; /* Slightly tighter gap for professional look */
+            gap: 30px;
             align-items: center;
         }
 
         .nav-item {
-            color: var(--navy-dark);
-            font-weight: 700;
-            font-size: 13px; /* Slightly smaller to match slim header */
-            white-space: nowrap;
+            color: var(--text-white); 
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             display: flex;
             align-items: center;
             gap: 6px;
@@ -75,13 +77,13 @@
         .dropdown-content {
             display: none;
             position: absolute;
-            background: white;
-            min-width: 200px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            background: #ffffff;
+            min-width: 220px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
             border-radius: 8px;
             top: 100%;
             padding: 10px 0;
-            border-top: 3px solid var(--brand-orange);
+            border-top: 4px solid var(--brand-orange);
             z-index: 3000;
         }
         .dropdown:hover .dropdown-content { display: block; }
@@ -89,37 +91,49 @@
         .dropdown-content a {
             padding: 12px 20px;
             display: block;
-            color: var(--navy-dark);
+            color: #1e293b !important;
             font-size: 13px;
             font-weight: 600;
         }
 
-        /* --- MOBILE LAYOUT --- */
-        @media (max-width: 992px) {
-            .navbar { height: auto; position: relative; }
-            .nav-wrapper { flex-direction: column; padding: 12px 10px; }
-            .logo img { height: 40px; margin-bottom: 8px; }
-            .nav-links { width: 100%; overflow-x: auto; gap: 20px; padding-bottom: 5px; }
-            .ap-ticker-container { margin-top: 0; }
+        /* --- ENQUIRY BUTTON --- */
+        .enquiry-cta-btn {
+            background: var(--brand-orange);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 800;
+            border: none;
+            cursor: pointer;
+            transition: 0.4s ease;
+            font-size: 12px;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(245, 124, 32, 0.4);
         }
 
-        /* --- TICKER --- */
+        .enquiry-cta-btn:hover { 
+            background: white;
+            color: var(--brand-orange);
+            transform: translateY(-2px);
+        }
+
+        /* --- TICKER SECTION --- */
         .ap-ticker-container {
-            margin-top: 70px; /* Must match navbar height */
-            background: linear-gradient(90deg, #1a3a5f 0%, #4b0082 50%, #b8860b 100%);
+            margin-top: 90px; /* Matches Navbar height exactly */
+            background: linear-gradient(90deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
             color: #fff;
-            padding: 10px 0;
+            padding: 12px 0;
             overflow: hidden;
         }
         .ap-ticker-content {
             display: inline-block;
             white-space: nowrap;
-            animation: ap-scroll 30s linear infinite;
+            animation: ap-scroll 35s linear infinite;
         }
         .ap-ticker-content span { padding: 0 40px; font-weight: 600; font-size: 13px; text-transform: uppercase; }
         @keyframes ap-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-        /* --- HERO --- */
+        /* --- HERO SECTION --- */
         .hero {
             position: relative;
             width: 100%; height: 75vh;
@@ -136,37 +150,36 @@
             display: flex; justify-content: center; align-items: center;
         }
         .hero-content h1 {
-            font-size: clamp(30px, 10vw, 60px);
-            color: #fff; font-weight: 800; letter-spacing: 5px;
+            font-size: clamp(30px, 10vw, 65px);
+            color: #fff; font-weight: 800; letter-spacing: 8px; text-align: center;
+            text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
         }
 
         .hero-subtitle {
-            background: #fff; color: var(--navy-dark);
-            padding: 15px; text-align: center; font-weight: 700;
-            border-bottom: 2px solid #eee; font-size: 15px;
+            background: #fff; color: #1e293b;
+            padding: 20px; text-align: center; font-weight: 700;
+            border-bottom: 2px solid #eee; font-size: 16px;
         }
 
-        /* --- ENQUIRY BUTTON --- */
-        .enquiry-cta-btn {
-            background: var(--brand-orange); color: white;
-            padding: 10px 22px; border-radius: 6px;
-            font-weight: 800; border: none; cursor: pointer;
-            transition: 0.3s; font-size: 13px;
+        /* --- MOBILE VIEW --- */
+        @media (max-width: 992px) {
+            .navbar { height: auto; padding: 15px 0; position: relative; }
+            .nav-wrapper { flex-direction: column; gap: 15px; }
+            .logo img { height: 50px; }
+            .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .ap-ticker-container { margin-top: 0; }
         }
-        .enquiry-cta-btn:hover { background: #e06b12; }
 
         /* --- MODAL --- */
         .enquiry-modal {
             display: none; position: fixed; z-index: 9999; inset: 0;
-            background: rgba(0,0,0,0.85); align-items: center; justify-content: center;
+            background: rgba(0,0,0,0.9); align-items: center; justify-content: center;
         }
         .enquiry-modal-content {
-            background: white; padding: 30px; border-radius: 15px;
-            width: 90%; max-width: 400px;
+            background: white; padding: 40px; border-radius: 20px; width: 90%; max-width: 420px;
         }
         .enquiry-form input, .enquiry-form select, .enquiry-form textarea {
-            width: 100%; padding: 12px; margin: 10px 0;
-            border: 1px solid #ddd; border-radius: 5px;
+            width: 100%; padding: 14px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px;
         }
     </style>
 </head>
@@ -180,31 +193,27 @@
 
             <div class="nav-links">
                 <a href="#home" class="nav-item">HOME</a>
-                
                 <div class="dropdown">
-                    <a href="#about" class="nav-item">ABOUT <i class="fas fa-chevron-down"></i></a>
+                    <a href="#about" class="nav-item">ABOUT <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
                     <div class="dropdown-content">
-                        <a href="#about">ABOUT US</a>
+                        <a href="#about">WHO WE ARE</a>
                         <a href="#team">OUR TEAM</a>
                     </div>
                 </div>
-
                 <div class="dropdown">
-                    <a href="#services" class="nav-item">SERVICES <i class="fas fa-chevron-down"></i></a>
+                    <a href="#services" class="nav-item">SERVICES <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
                     <div class="dropdown-content">
-                        <a href="#Home_Loan">HOME LOAN</a>
-                        <a href="#P_loan">PERSONAL LOAN</a>
+                        <a href="#Home_Loan">HOME LOANS</a>
+                        <a href="#P_loan">PERSONAL LOANS</a>
                     </div>
                 </div>
-
                 <div class="dropdown">
-                    <a href="#projects" class="nav-item">PROJECTS <i class="fas fa-chevron-down"></i></a>
+                    <a href="#projects" class="nav-item">PROJECTS <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
                     <div class="dropdown-content">
-                        <a href="projects.html" style="background: var(--brand-orange); color: white; text-align: center;">VIEW ALL PROJECTS</a>
+                        <a href="projects.html" style="background: var(--brand-orange); color: white !important; text-align: center; border-radius: 6px; margin: 5px 15px;">EXPLORE PROJECTS</a>
                     </div>
                 </div>
-
-                <a href="#contact" class="nav-item">CONTACT US</a>
+                <a href="#contact" class="nav-item">CONTACT</a>
             </div>
 
             <button class="enquiry-cta-btn" onclick="toggleModal(true)">ENQUIRY NOW</button>
@@ -216,6 +225,7 @@
             <span>🚀 New Premium Projects Launching in Pune</span>
             <span>🏠 Luxury Apartments: 1, 2 & 3 BHK</span>
             <span>📞 Contact: +91 9130030046</span>
+            <span>🚀 New Premium Projects Launching in Pune</span>
         </div>
     </div>
 
@@ -234,7 +244,7 @@
 
     <div id="enquiryModal" class="enquiry-modal">
         <div class="enquiry-modal-content">
-            <h2 style="color: var(--brand-orange); margin-bottom: 15px;">Property Enquiry</h2>
+            <h2 style="color: var(--brand-orange); margin-bottom: 20px; font-weight: 800;">Get In Touch</h2>
             <form id="waForm" class="enquiry-form">
                 <input type="text" id="name" placeholder="Full Name" required>
                 <input type="tel" id="phone" placeholder="Mobile Number" required>
@@ -530,7 +540,7 @@ h1 {
     }
 
     .logo img {
-        height: 150px; /* Increased for maximum clarity of the name */
+        height: 100px; /* Increased for maximum clarity of the name *logo resize here /
         width: auto;
         display: block;
         object-fit: contain;
