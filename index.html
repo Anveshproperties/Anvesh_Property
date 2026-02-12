@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1200"> 
     <title>Anvesh Properties | Premium Real Estate</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -15,15 +15,24 @@
             --text-white: #ffffff;
         }
 
+        /* Fixed width for the entire page to force Desktop View */
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            line-height: 1.6; 
+            background-color: #fff; 
+            min-width: 1200px; /* Forces desktop width */
+            margin: 0;
+            padding: 0;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; text-decoration: none !important; }
-        body { font-family: 'Poppins', sans-serif; line-height: 1.6; overflow-x: hidden; background-color: #fff; }
 
         /* --- FIXED SOLID PREMIUM NAVBAR --- */
         .navbar {
             position: fixed;
             top: 0; 
             width: 100%; 
-            height: 80px; 
+            height: 90px; 
             z-index: 2000;
             display: flex;
             align-items: center;
@@ -33,48 +42,45 @@
         }
 
         .nav-wrapper {
-            width: 100%;
-            max-width: 1400px;
+            width: 1200px; /* Fixed width for consistency */
             margin: 0 auto;
             display: flex;
-            justify-content: space-between; /* Logo left, Button right, Content middle */
+            justify-content: space-between;
             align-items: center;
-            padding: 0 15px;
-            flex-wrap: nowrap; /* Forces everything on one line */
+            padding: 0 30px;
         }
 
         .logo { flex-shrink: 0; }
         .logo img { 
-            height: 45px; 
+            height: 60px; 
             width: auto; 
             object-fit: contain;
-            transition: 0.3s ease;
         }
 
         /* --- CENTERED GROUP --- */
         .nav-center-group {
             display: flex;
             align-items: center;
-            gap: 15px; /* Decreased space between menu and enquiry button */
+            gap: 25px; /* Spacing as seen on desktop */
             justify-content: center;
             flex-grow: 1;
         }
 
         .nav-links {
             display: flex;
-            gap: 15px; /* Space between individual buttons */
+            gap: 30px;
             align-items: center;
         }
 
         .nav-item {
             color: var(--text-white); 
             font-weight: 600;
-            font-size: 11px;
-            letter-spacing: 0.5px;
+            font-size: 13px;
+            letter-spacing: 1px;
             text-transform: uppercase;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
             transition: 0.3s ease;
             white-space: nowrap;
         }
@@ -87,7 +93,7 @@
             display: none;
             position: absolute;
             background: #ffffff;
-            min-width: 180px;
+            min-width: 200px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
             border-radius: 8px;
             top: 100%;
@@ -97,10 +103,10 @@
         }
         .dropdown:hover .dropdown-content { display: block; }
         .dropdown-content a {
-            padding: 10px 15px;
+            padding: 12px 20px;
             display: block;
             color: #1e293b !important;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 600;
         }
 
@@ -108,17 +114,16 @@
         .enquiry-cta-btn {
             background: var(--brand-orange);
             color: white;
-            padding: 8px 16px;
+            padding: 12px 28px;
             border-radius: 50px;
-            font-weight: 700;
+            font-weight: 800;
             border: none;
             cursor: pointer;
             transition: 0.4s ease;
-            font-size: 10px;
+            font-size: 12px;
             text-transform: uppercase;
             box-shadow: 0 5px 15px rgba(245, 124, 32, 0.4);
             white-space: nowrap;
-            flex-shrink: 0;
         }
 
         .enquiry-cta-btn:hover { 
@@ -129,24 +134,25 @@
 
         /* --- TICKER SECTION --- */
         .ap-ticker-container {
-            margin-top: 80px; 
+            margin-top: 90px; 
             background: linear-gradient(90deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
             color: #fff;
-            padding: 8px 0;
+            padding: 12px 0;
             overflow: hidden;
+            width: 100%;
         }
         .ap-ticker-content {
             display: inline-block;
             white-space: nowrap;
             animation: ap-scroll 35s linear infinite;
         }
-        .ap-ticker-content span { padding: 0 30px; font-weight: 600; font-size: 11px; text-transform: uppercase; }
+        .ap-ticker-content span { padding: 0 40px; font-weight: 600; font-size: 13px; text-transform: uppercase; }
         @keyframes ap-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
         /* --- HERO SECTION --- */
         .hero {
             position: relative;
-            width: 100%; height: 60vh;
+            width: 100%; height: 75vh;
             overflow: hidden; background: #000;
         }
         .hero-video {
@@ -160,26 +166,16 @@
             display: flex; justify-content: center; align-items: center;
         }
         .hero-content h1 {
-            font-size: clamp(24px, 8vw, 55px);
-            color: #fff; font-weight: 800; letter-spacing: 5px; text-align: center;
+            font-size: 65px;
+            color: #fff; font-weight: 800; letter-spacing: 8px; text-align: center;
+            text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
         }
 
         .hero-subtitle {
             background: #fff; color: #1e293b;
-            padding: 15px; text-align: center; font-weight: 700;
-            border-bottom: 2px solid #eee; font-size: 14px;
-        }
-
-        /* --- MOBILE SPECIFIC VIEW (FORCE ONE LINE) --- */
-        @media (max-width: 768px) {
-            .navbar { height: 70px; }
-            .logo img { height: 30px; }
-            .nav-item { font-size: 8px; gap: 2px; }
-            .nav-links { gap: 8px; }
-            .enquiry-cta-btn { padding: 6px 10px; font-size: 8px; }
-            .nav-center-group { gap: 8px; }
-            .nav-item i { font-size: 7px !important; }
-            .ap-ticker-container { margin-top: 70px; }
+            padding: 20px; text-align: center; font-weight: 700;
+            border-bottom: 2px solid #eee; font-size: 18px;
+            width: 100%;
         }
 
         /* --- MODAL --- */
@@ -188,10 +184,11 @@
             background: rgba(0,0,0,0.9); align-items: center; justify-content: center;
         }
         .enquiry-modal-content {
-            background: white; padding: 30px; border-radius: 20px; width: 90%; max-width: 400px;
+            background: white; padding: 40px; border-radius: 20px; width: 420px;
         }
         .enquiry-form input, .enquiry-form select, .enquiry-form textarea {
-            width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px;
+            width: 100%; padding: 14px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
         }
     </style>
 </head>
@@ -207,23 +204,23 @@
                 <div class="nav-links">
                     <a href="#home" class="nav-item">HOME</a>
                     <div class="dropdown">
-                        <a href="#about" class="nav-item">ABOUT <i class="fas fa-chevron-down" style="font-size: 8px;"></i></a>
+                        <a href="#about" class="nav-item">ABOUT <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
                         <div class="dropdown-content">
                             <a href="#about">WHO WE ARE</a>
                             <a href="#team">OUR TEAM</a>
                         </div>
                     </div>
                     <div class="dropdown">
-                        <a href="#services" class="nav-item">SERVICES <i class="fas fa-chevron-down" style="font-size: 8px;"></i></a>
+                        <a href="#services" class="nav-item">SERVICES <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
                         <div class="dropdown-content">
                             <a href="#Home_Loan">HOME LOANS</a>
                             <a href="#P_loan">PERSONAL LOANS</a>
                         </div>
                     </div>
                     <div class="dropdown">
-                        <a href="#projects" class="nav-item">PROJECTS <i class="fas fa-chevron-down" style="font-size: 8px;"></i></a>
+                        <a href="#projects" class="nav-item">PROJECTS <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
                         <div class="dropdown-content">
-                            <a href="projects.html" style="background: var(--brand-orange); color: white !important; text-align: center; border-radius: 4px;">EXPLORE</a>
+                            <a href="projects.html" style="background: var(--brand-orange); color: white !important; text-align: center; border-radius: 6px; margin: 5px 15px;">EXPLORE PROJECTS</a>
                         </div>
                     </div>
                     <a href="#contact" class="nav-item">CONTACT</a>
@@ -3240,6 +3237,7 @@ We take every career and every property journey seriously, following a well-defi
 </footer>
 </body>
 </html>
+
 
 
 
