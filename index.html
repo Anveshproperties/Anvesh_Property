@@ -23,11 +23,10 @@
             position: fixed;
             top: 0; 
             width: 100%; 
-            height: 90px; 
+            height: 85px; 
             z-index: 2000;
             display: flex;
             align-items: center;
-            /* Constant Premium Solid Gradient */
             background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             border-bottom: 3px solid var(--brand-orange);
@@ -37,24 +36,30 @@
             width: 100%;
             max-width: 1400px;
             margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            /* Creates 3 columns: Logo (left), Buttons (center), Spacer (right) */
+            grid-template-columns: 1fr auto 1fr; 
             align-items: center;
             padding: 0 30px;
         }
 
         .logo img { 
-            height: 60px; /* Large, clear logo size */
+            height: 50px; 
             width: auto; 
             object-fit: contain;
-            transition: 0.3s ease;
         }
-        
-        .logo img:hover { transform: scale(1.05); }
+
+        /* --- CENTERED GROUP --- */
+        .nav-links-container {
+            display: flex;
+            align-items: center;
+            gap: 25px; /* Space between links and enquiry button */
+            justify-content: center;
+        }
 
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 20px;
             align-items: center;
         }
 
@@ -62,11 +67,11 @@
             color: var(--text-white); 
             font-weight: 600;
             font-size: 13px;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
             transition: 0.3s ease;
         }
 
@@ -78,7 +83,7 @@
             display: none;
             position: absolute;
             background: #ffffff;
-            min-width: 220px;
+            min-width: 200px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
             border-radius: 8px;
             top: 100%;
@@ -89,10 +94,10 @@
         .dropdown:hover .dropdown-content { display: block; }
 
         .dropdown-content a {
-            padding: 12px 20px;
+            padding: 10px 20px;
             display: block;
             color: #1e293b !important;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
         }
 
@@ -100,29 +105,30 @@
         .enquiry-cta-btn {
             background: var(--brand-orange);
             color: white;
-            padding: 12px 28px;
+            padding: 10px 22px;
             border-radius: 50px;
-            font-weight: 800;
+            font-weight: 700;
             border: none;
             cursor: pointer;
             transition: 0.4s ease;
-            font-size: 12px;
+            font-size: 11px;
             text-transform: uppercase;
-            box-shadow: 0 5px 15px rgba(245, 124, 32, 0.4);
+            box-shadow: 0 5px 15px rgba(245, 124, 32, 0.3);
+            white-space: nowrap;
         }
 
         .enquiry-cta-btn:hover { 
             background: white;
             color: var(--brand-orange);
-            transform: translateY(-2px);
+            transform: scale(1.05);
         }
 
         /* --- TICKER SECTION --- */
         .ap-ticker-container {
-            margin-top: 90px; /* Matches Navbar height exactly */
+            margin-top: 85px; 
             background: linear-gradient(90deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
             color: #fff;
-            padding: 12px 0;
+            padding: 10px 0;
             overflow: hidden;
         }
         .ap-ticker-content {
@@ -136,50 +142,31 @@
         /* --- HERO SECTION --- */
         .hero {
             position: relative;
-            width: 100%; height: 75vh;
+            width: 100%; height: 70vh;
             overflow: hidden; background: #000;
         }
         .hero-video {
             position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%);
             min-width: 100%; min-height: 100%;
-            object-fit: cover; opacity: 0.7;
+            object-fit: cover; opacity: 0.6;
         }
         .hero-content {
             position: relative; z-index: 2; height: 100%;
             display: flex; justify-content: center; align-items: center;
         }
         .hero-content h1 {
-            font-size: clamp(30px, 10vw, 65px);
-            color: #fff; font-weight: 800; letter-spacing: 8px; text-align: center;
-            text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
-        }
-
-        .hero-subtitle {
-            background: #fff; color: #1e293b;
-            padding: 20px; text-align: center; font-weight: 700;
-            border-bottom: 2px solid #eee; font-size: 16px;
+            font-size: clamp(28px, 8vw, 60px);
+            color: #fff; font-weight: 800; letter-spacing: 6px; text-align: center;
         }
 
         /* --- MOBILE VIEW --- */
         @media (max-width: 992px) {
-            .navbar { height: auto; padding: 15px 0; position: relative; }
-            .nav-wrapper { flex-direction: column; gap: 15px; }
-            .logo img { height: 50px; }
-            .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .navbar { height: auto; padding: 15px 0; }
+            .nav-wrapper { display: flex; flex-direction: column; gap: 15px; }
+            .nav-links-container { flex-direction: column; gap: 15px; }
+            .nav-links { gap: 12px; flex-wrap: wrap; justify-content: center; }
             .ap-ticker-container { margin-top: 0; }
-        }
-
-        /* --- MODAL --- */
-        .enquiry-modal {
-            display: none; position: fixed; z-index: 9999; inset: 0;
-            background: rgba(0,0,0,0.9); align-items: center; justify-content: center;
-        }
-        .enquiry-modal-content {
-            background: white; padding: 40px; border-radius: 20px; width: 90%; max-width: 420px;
-        }
-        .enquiry-form input, .enquiry-form select, .enquiry-form textarea {
-            width: 100%; padding: 14px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px;
         }
     </style>
 </head>
@@ -191,35 +178,68 @@
                 <img src="rlogo.png" alt="Anvesh Properties">
             </div>
 
-            <div class="nav-links">
-                <a href="#home" class="nav-item">HOME</a>
-                <div class="dropdown">
-                    <a href="#about" class="nav-item">ABOUT <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
-                    <div class="dropdown-content">
-                        <a href="#about">WHO WE ARE</a>
-                        <a href="#team">OUR TEAM</a>
+            <div class="nav-links-container">
+                <div class="nav-links">
+                    <a href="#home" class="nav-item">HOME</a>
+                    <div class="dropdown">
+                        <a href="#about" class="nav-item">ABOUT <i class="fas fa-chevron-down" style="font-size: 9px;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#about">WHO WE ARE</a>
+                            <a href="#team">OUR TEAM</a>
+                        </div>
                     </div>
-                </div>
-                <div class="dropdown">
-                    <a href="#services" class="nav-item">SERVICES <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
-                    <div class="dropdown-content">
-                        <a href="#Home_Loan">HOME LOANS</a>
-                        <a href="#P_loan">PERSONAL LOANS</a>
+                    <div class="dropdown">
+                        <a href="#services" class="nav-item">SERVICES <i class="fas fa-chevron-down" style="font-size: 9px;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#Home_Loan">HOME LOANS</a>
+                            <a href="#P_loan">PERSONAL LOANS</a>
+                        </div>
                     </div>
-                </div>
-                <div class="dropdown">
-                    <a href="#projects" class="nav-item">PROJECTS <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
-                    <div class="dropdown-content">
-                        <a href="projects.html" style="background: var(--brand-orange); color: white !important; text-align: center; border-radius: 6px; margin: 5px 15px;">EXPLORE PROJECTS</a>
+                    <div class="dropdown">
+                        <a href="#projects" class="nav-item">PROJECTS <i class="fas fa-chevron-down" style="font-size: 9px;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="projects.html" style="background: var(--brand-orange); color: white !important; text-align: center; border-radius: 4px; margin: 5px 10px;">EXPLORE PROJECTS</a>
+                        </div>
                     </div>
+                    <a href="#contact" class="nav-item">CONTACT</a>
                 </div>
-                <a href="#contact" class="nav-item">CONTACT</a>
+
+                <button class="enquiry-cta-btn" onclick="toggleModal(true)">ENQUIRY NOW</button>
             </div>
 
-            <button class="enquiry-cta-btn" onclick="toggleModal(true)">ENQUIRY NOW</button>
+            <div class="nav-spacer"></div>
         </div>
     </nav>
 
+    <div class="ap-ticker-container">
+        <div class="ap-ticker-content">
+            <span>Premium Luxury Apartments</span>
+            <span>Interest Rates Starting at 8.5%*</span>
+            <span>New Projects in Prime Locations</span>
+            <span>Trusted by 5000+ Families</span>
+            <span>Premium Luxury Apartments</span>
+            <span>Interest Rates Starting at 8.5%*</span>
+            <span>New Projects in Prime Locations</span>
+            <span>Trusted by 5000+ Families</span>
+        </div>
+    </div>
+
+    <section class="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="luxury-home.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>FIND YOUR DREAM HOME</h1>
+        </div>
+    </section>
+
+    <script>
+        function toggleModal(show) {
+            alert("Enquiry form coming soon!");
+        }
+    </script>
+</body>
+</html>
     <div class="ap-ticker-container">
         <div class="ap-ticker-content">
             <span>🚀 New Premium Projects Launching in Pune</span>
@@ -3226,6 +3246,7 @@ We take every career and every property journey seriously, following a well-defi
 </footer>
 </body>
 </html>
+
 
 
 
