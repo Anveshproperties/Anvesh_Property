@@ -21,7 +21,6 @@
             font-family: 'Poppins', sans-serif; 
             line-height: 1.6; 
             background-color: #fff; 
-            /* Ensures the desktop scale is preserved */
             min-width: 1200px; 
             overflow-x: hidden; 
         }
@@ -30,7 +29,7 @@
         .navbar {
             position: fixed;
             top: 0; 
-            width: 100%; /* Stretches end-to-end */
+            width: 100%; 
             height: 90px; 
             z-index: 2000;
             display: flex;
@@ -40,12 +39,11 @@
             border-bottom: 3px solid var(--brand-orange);
         }
 
-        /* Keeps content centered within the edge-to-edge bar */
         .nav-wrapper {
             width: 1200px;
             margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 250px 1fr 250px; /* Logo left, Buttons center, Empty right for balance */
             align-items: center;
             padding: 0 20px;
         }
@@ -56,10 +54,12 @@
             object-fit: contain;
         }
 
+        /* --- CENTERED GROUP FOR ALL BUTTONS --- */
         .nav-center-group {
             display: flex;
             align-items: center;
-            gap: 20px; 
+            gap: 30px; /* Space between the menu and the Enquiry button */
+            justify-content: center; /* This centers everything in the middle column */
         }
 
         .nav-links {
@@ -78,6 +78,7 @@
             align-items: center;
             gap: 6px;
             white-space: nowrap;
+            transition: 0.3s;
         }
 
         .nav-item:hover { color: var(--brand-orange); }
@@ -106,7 +107,7 @@
         .enquiry-cta-btn {
             background: var(--brand-orange);
             color: white;
-            padding: 12px 24px;
+            padding: 12px 28px;
             border-radius: 50px;
             font-weight: 800;
             border: none;
@@ -114,12 +115,19 @@
             font-size: 12px;
             text-transform: uppercase;
             box-shadow: 0 5px 15px rgba(245, 124, 32, 0.4);
+            transition: 0.3s;
+        }
+
+        .enquiry-cta-btn:hover {
+            background: white;
+            color: var(--brand-orange);
+            transform: scale(1.05);
         }
 
         /* --- TICKER: EDGE TO EDGE --- */
         .ap-ticker-container {
             margin-top: 90px; 
-            width: 100%; /* Stretches end-to-end */
+            width: 100%; 
             background: linear-gradient(90deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
             color: #fff;
             padding: 12px 0;
@@ -136,7 +144,7 @@
         /* --- HERO: EDGE TO EDGE --- */
         .hero {
             position: relative;
-            width: 100%; /* Stretches end-to-end */
+            width: 100%; 
             height: 75vh;
             overflow: hidden; 
             background: #000;
@@ -157,7 +165,7 @@
         }
 
         .hero-subtitle {
-            width: 100%; /* Stretches end-to-end */
+            width: 100%; 
             background: #fff; color: #1e293b;
             padding: 20px; text-align: center; font-weight: 700;
             border-bottom: 2px solid #eee; font-size: 18px;
@@ -212,6 +220,8 @@
 
                 <button class="enquiry-cta-btn" onclick="toggleModal(true)">ENQUIRY NOW</button>
             </div>
+            
+            <div></div>
         </div>
     </nav>
 
@@ -3221,6 +3231,7 @@ We take every career and every property journey seriously, following a well-defi
 </footer>
 </body>
 </html>
+
 
 
 
